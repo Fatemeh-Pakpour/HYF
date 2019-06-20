@@ -3,9 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <title>Title of the document</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-</body>
-<script src="homework-JavaScript1-week3.js"></script>
+    <body>
+        <br/>
+        <br/>
+        
+        <div class="spiritAnimalNameGenerator" id="spiritAnimal">
+            <h3>Spirit animal name generator</h3>
+            <div>Choose how to show spirit animal.</div>
+            <ul>
+                <li><input type="checkbox" id="user-submit" name="user-submit" onchange="getName('submit', !checked)"><label for="user-submit">On submit</label></li>
+                <li><input type="checkbox" id="user-hover" name="user-hover" onclick="getName('hover', !checked)"><label for="user-hover">On hover</label></li>
+                <li><input type="checkbox" id="user-enter" name="user-enter" onclick="getName('enter', !checked)"><label for="user-enter">On press Enter</label></li>
+            </ul>
+            Your name: <input type="text" value="Olha">
+            <input type="submit" value="Submit">
+            <p></p>
+        </div>
+        <script src="homework-JavaScript2-week4.js"></script>
+    </body>
+
 </html>
