@@ -69,13 +69,34 @@ section.products>ul {
 section.products>ul>li>ul {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
+    align-content: flex-start;
     padding: 12px 12px 12px 12px;
+}
+
+section.products>ul>li>ul>li{
+    color: darkgrey;
+    flex: 1;
+}
+
+section.products>ul>li>ul>li:first-child{
+    color: black;
 }
 
 section.products>ul>li>ul>li:first-child {
     width: 200px;
 }
+
+
+section.products>ul>li>ul>li>ul{
+    display: flex;
+    flex-flow: column wrap;
+    /* justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start; */
+}
+
+
 
 section.products>ul>li:nth-child(odd) {
     background-color: #f0f0f0;
