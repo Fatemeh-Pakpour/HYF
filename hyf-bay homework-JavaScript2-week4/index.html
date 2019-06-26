@@ -13,13 +13,13 @@
                 </div>
             </header>
             <section class="table-view-control">
-                <div class="search">
+                <div class="search" >
                     <label>What are you looking for?</label>
-                    <input type="text">
+                    <input type="text" id="search">
                 </div>
                 <div class="sort">
                     <label>Sort:</label>
-                    <select>
+                    <select id="sort">
                         <option value="cheap">Cheap first</option>
                         <option value="expensive">Expensive first</option>
                         <option value="name">Name</option>
@@ -28,7 +28,7 @@
                 <div class="filters">
                     <div class="country">
                         <label>Ships to</label>
-                        <select>
+                        <select id="country">
                             <option value="denmark">Denmark</option>
                             <option value="sweden">Sweden</option>
                             <option value="norway">Norway</option>
@@ -48,7 +48,7 @@
             </section>
             <section class="cart">
                 <h2>Your shopping cart</h2>
-                <div class="total">
+                <div class="total" id="totalPrice">
                     <p>Total price:<span></span></p>
                 </div>
                 <ul></ul>

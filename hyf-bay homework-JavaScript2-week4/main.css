@@ -63,7 +63,17 @@ section.table-view-control>div, section.table-view-control .filters>div {
 }
 
 section.products>ul {
-    padding: 0;
+    padding: 0;    
+}
+section.products>ul>li{
+    position: relative;
+}
+section.products>ul>li>.add-button{
+    width: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: -12px;
 }
 
 section.products>ul>li>ul {
@@ -135,6 +145,11 @@ section.cart ul>li {
     display: flex;
     justify-content: space-between;
     padding: 6px;
+    display: flex;
+}
+
+section.cart ul>li>div {
+    display: inline-block;
 }
 
 section.cart ul>li:nth-child(odd) {

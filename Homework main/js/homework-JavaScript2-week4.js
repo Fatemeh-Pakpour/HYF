@@ -47,8 +47,8 @@ let averageAndMedian = findAverageAndMedian(housePrices);
 console.log(averageAndMedian);
 
 const body = document.body;
-const h3 = document.createElement('h3');
-h3.innerHTML = `For array : ${housePrices}`;
+let span = document.createElement('span');
+span.innerHTML = `For array : ${housePrices}`;
 
 const list = document.createElement('ul');
 
@@ -66,8 +66,11 @@ for(let key in averageAndMedian){
     li.appendChild(span);
     list.appendChild(li);
 }
-body.insertBefore(list, body.childNodes[0]);
-body.insertBefore(h3, body.childNodes[0]);
+
+let averageMedian = document.getElementById('averageMedian');
+
+averageMedian.appendChild(list);
+averageMedian.appendChild(span);
 console.log(' ');
 
 
