@@ -230,7 +230,7 @@ function findMostlyDuplicatedWords(arr){
         return b.amount - a.amount;
     })
 
-    //console.log(sortedArrayByAmountOfDuplicateWords);
+    console.log('What I need', sortedArrayByAmountOfDuplicateWords);
 
     let x = sortedArrayByAmountOfDuplicateWords.slice(0, 50);
     return x;

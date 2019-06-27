@@ -63,7 +63,6 @@ function renderProducts(arr){
                 productsElementli.innerHTML = `${key} : ${x[key]}`;  
             }
             
-            
             productsElement.appendChild(productsElementli);
             
         }
@@ -154,3 +153,12 @@ function addToBasket(passedObj){
     
     basketsList.append(basketUlLi);
 }
+
+
+
+//Price analytics
+function callbackExample(text){
+    console.log(text);
+}
+
+sendPricesToServer(pricesArray, () => callbackExample('Data sent'));
