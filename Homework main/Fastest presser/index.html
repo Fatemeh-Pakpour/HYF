@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Fastest presser</title>
+<link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <h1>Fastest presser</h1>
+        <input type="number" placeholder="Set seconds" id="set_seconds" min="1" max="30">
+        <br>
+        <button id="start_button">Start game!</button><span class="countdown" id="countdown"></span>
+        <div class="main-field">
+            <div id="first_player">
+                <p>Press S</p>
+                <div id="first_counter"></div>
+                <div class="won-message"></div>
+            </div>
+            <div id="second_player">
+                <p>Press L</p>
+                <div id="second_counter"></div>
+                <div class="won-message"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/js.js"></script>
+</body>
+
+</html>

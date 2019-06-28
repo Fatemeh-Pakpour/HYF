@@ -154,11 +154,11 @@ function addToBasket(passedObj){
     basketsList.append(basketUlLi);
 }
 
-
-
+let pricesToServer = products.map(x => x.price);
+console.log(pricesToServer);
 //Price analytics
 function callbackExample(text){
     console.log(text);
 }
 
-sendPricesToServer(pricesArray, () => callbackExample('Data sent'));
+sendPricesToServer(pricesToServer, (x) => callbackExample(x));
