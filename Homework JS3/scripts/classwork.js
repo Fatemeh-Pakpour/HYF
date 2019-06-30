@@ -67,31 +67,72 @@ function displayAstronauts(arr){
 
 //Dog fan website
 let randomImg;
+let showedBreedName;
+let dogs = document.getElementById('dogs');
 
-function showDogs(count){
+function showDogs(){
+    //function showDogs(count){
+    //if(count > 0){
+    //     setTimeout(() => showDogs(count - 1), 2000);
+    //}
+    //showDogs(10);
 
+    getRandomBreeds().then(function(breedName){
+        console.log(breedName);
+        let api = `https://dog.ceo/api/breed/${breedName}/images/random`;
+        console.log(api);
     
-    fetch('https://dog.ceo/api/breeds/image/random')
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {    
-            let dogs = document.getElementById('dogs');
-    
-            if(!randomImg){
-                randomImg = document.createElement('img');            
-                dogs.appendChild(randomImg);
-            } 
-            
-            randomImg.setAttribute('src', data.message);
-            randomImg.setAttribute('alt', 'dog');
-    
-        });
+        fetch(api)
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {                
+        
+                if(!randomImg){
+                    randomImg = document.createElement('img');            
+                    dogs.appendChild(randomImg);
+                } 
+                if(!showedBreedName){
+                    showedBreedName = document.createElement('h3');
+                    dogs.appendChild(showedBreedName);
+                }
 
-        if(count > 0){
-            setTimeout(() => showDogs(count - 1), 2000);
-        }
+                randomImg.setAttribute('src', data.message);
+                randomImg.setAttribute('alt', 'dog');                
+                showedBreedName.innerHTML = breedName.slice(0,1).toUpperCase() + breedName.slice(1);
+            });
+    
+            setTimeout(() => showDogs(), 2000);
+    });
 }
 
 
-showDogs(10);
+function getRandomBreeds(){  
+
+    let y = new Promise(function(resolve, reject){
+
+        let x;
+        
+        fetch('https://dog.ceo/api/breeds/list/all')
+        .then(response => {
+            return response.json();
+        })
+        .then(data => {
+            let breeds = data.message;
+            
+            let keys = Object.keys(breeds);
+            x = keys[ keys.length * Math.random() << 0];
+    
+            // if(breeds[x].length !== 0){
+            //     let arr = breeds[x];
+            //     x += '-' + arr[Math.floor(Math.random()*arr.length)];
+            // }
+    
+            resolve(x);    
+        });
+    });
+
+    return y;
+}
+
+showDogs();
