@@ -6,29 +6,30 @@ let getWeather = document.getElementById('get-weather');
 let getWeatherForYourCity = document.getElementById('get-weather-for-your-city');
 let ul = document.createElement('ul');
 
-city.addEventListener('click', function(){//clear input field
-    city.value = '';
-});
+city.addEventListener('click', () => city.value = ''); //clear input field
+    
+
 window.addEventListener('load', getWeatherData); //pull location from local storage
 getWeather.addEventListener('click', getWeatherData); //show weather on specific city
 getWeatherForYourCity.addEventListener('click', getWeatherData); //show weather by location
 weather.appendChild(ul); //add weather information
 
-let watchLocation = new Promise(function(resolve, reject){ //searching for the location
+let watchLocation = new Promise(function(resolve){ //searching for the location
+    
+    let geoArray = [];
 
-    let x = [];
+    navigator.geolocation.getCurrentPosition(function(position) {
 
-    navigator.geolocation.watchPosition(function(position) {
-
-        x[0] = (position.coords.latitude)
-        x[1] = (position.coords.longitude);
+        geoArray[0] = position.coords.latitude;
+        geoArray[1] = position.coords.longitude;
         
-        let arrayToStoreInLocalStorage = JSON.stringify(x);
-
+        let arrayToStoreInLocalStorage = JSON.stringify(geoArray);
         localStorage.setItem('key', arrayToStoreInLocalStorage);
-        resolve(x);
     });
+    resolve(geoArray);
+
 })
+
 
 function getWeatherData(e){ //form data to show weather information
 
@@ -38,6 +39,7 @@ function getWeatherData(e){ //form data to show weather information
     if(e.target === document){ //if event fires on the document
 
         let arrayOfValueFromLocalStorage = JSON.parse(localStorage.getItem('key')) || [];
+        console.log(arrayOfValueFromLocalStorage);
 
         if (arrayOfValueFromLocalStorage.length === 0){ //if nothing in local storage
             findLocation();
@@ -53,8 +55,11 @@ function getWeatherData(e){ //form data to show weather information
     }
 
     else if(e.target === getWeather){//if event fires on the 'get a weather information' Button
+        
         let cityName = city.value.toLowerCase();
+        
         api = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=01a6493c3e5e1b74368f9faa44dcdcd3`;
+        
         if(city.value === ''){
             alert('Enter city!!!');
         }
@@ -62,6 +67,7 @@ function getWeatherData(e){ //form data to show weather information
             fetchApi();
         }
     }
+
     else if(e.target === getWeatherForYourCity){//if event fires on the 'Choose your City' Button
         findLocation();
     }
@@ -70,6 +76,7 @@ function getWeatherData(e){ //form data to show weather information
     function findLocation(){ //finds location
         watchLocation
         .then((array) => {
+            console.log(array);
             let lat = array[0].toFixed(2);
             let lon = array[1].toFixed(2);
             api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=01a6493c3e5e1b74368f9faa44dcdcd3`;
