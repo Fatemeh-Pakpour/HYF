@@ -36,25 +36,7 @@ function getWeatherData(e){ //form data to show weather information
     ul.innerHTML = '';
     let api;
 
-    if(e.target === document){ //if event fires on the document
-
-        let arrayOfValueFromLocalStorage = JSON.parse(localStorage.getItem('key')) || [];
-        console.log(arrayOfValueFromLocalStorage);
-
-        if (arrayOfValueFromLocalStorage.length === 0){ //if nothing in local storage
-            findLocation();
-        }
-        else { // if there is data in local storage
-            let lat = arrayOfValueFromLocalStorage[0].toFixed(2);
-            let lon = arrayOfValueFromLocalStorage[1].toFixed(2);
-    
-            api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=01a6493c3e5e1b74368f9faa44dcdcd3`;
-    
-            fetchApi();
-        }
-    }
-
-    else if(e.target === getWeather){//if event fires on the 'get a weather information' Button
+    if(e.target === getWeather){//if event fires on the 'get a weather information' Button
         
         let cityName = city.value.toLowerCase();
         
@@ -71,7 +53,23 @@ function getWeatherData(e){ //form data to show weather information
     else if(e.target === getWeatherForYourCity){//if event fires on the 'Choose your City' Button
         findLocation();
     }
+    else {//if(e.target === document){ //if event fires on the document
 
+        let arrayOfValueFromLocalStorage = JSON.parse(localStorage.getItem('key')) || [];
+        console.log(arrayOfValueFromLocalStorage);
+
+        if (arrayOfValueFromLocalStorage.length === 0){ //if nothing in local storage
+            findLocation();
+        }
+        else { // if there is data in local storage
+            let lat = arrayOfValueFromLocalStorage[0].toFixed(2);
+            let lon = arrayOfValueFromLocalStorage[1].toFixed(2);
+    
+            api = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=01a6493c3e5e1b74368f9faa44dcdcd3`;
+    
+            fetchApi();
+        }
+    }
 
     function findLocation(){ //finds location
         watchLocation
