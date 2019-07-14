@@ -25,17 +25,12 @@ const animalsJSON = { "animals" : [
 
 
 //Find a cool api 
-// https://www.goodreads.com/api
-// - register for a developer key; Most methods you can access just by passing your key;
-// - The easiest way to get started using our API is with curl. Just replace YOUR_KEY with your developer key
-//     curl "https://www.goodreads.com/search.xml?key=YOUR_KEY&q=Ender%27s+Game".
-// For writing data on Goodreads requires OAuth for authorization: register your app;
-// XML or Json response
+// http://open-notify.org/
 
-//https://cloud.google.com/maps-platform/?&sign=1
+// To find current location ISS - use 'http://api.open-notify.org/iss-now.json'. 
+// Data as json has an iss_position object with the latitude and longitude.
 
-//Weather app
-//API key is 01a6493c3e5e1b74368f9faa44dcdcd3
+
 
 
 

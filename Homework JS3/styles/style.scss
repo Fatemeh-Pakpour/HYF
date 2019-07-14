@@ -12,3 +12,9 @@ img{
     //width: 100px;
     max-height: 300px;
 }
+ul.weather{
+    li:first-child{
+        font-size: 25px;
+        font-weight: bold;
+    }
+}

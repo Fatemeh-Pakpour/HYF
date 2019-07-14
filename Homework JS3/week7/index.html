@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>JS3-week7</title>
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+    <div>
+        <h2>Weather API</h2>
+        <input id="typed-city" type="text" placeholder="Enter city">
+        <button id="get-weather">Get a weather information</button>
+        <button id="get-weather-for-your-city">Choose your city</button>
+        <ul id="weather-details-container" class="weather"></ul>
+    </div>
+
+    <div id="giphy">
+        <h2>Giphy API</h2>
+        <input id="search-word">
+        <input id="number-of-images">
+        <button id="search-for-images">Search for gif</button>
+        <ul id="giphy-images-container"></ul>
+    </div>
+
+    <script defer type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBc6F1oSiGrK26md8Qq9xUsLLLLhnxkn3U&libraries=places"></script>
+    <script src="scripts/JS3-1-homework.js"></script>
+    <script src="scripts/weatherAPI.js"></script>
+    <script src="scripts/giphyAPI.js"></script>
+</body>
+
+</html>
