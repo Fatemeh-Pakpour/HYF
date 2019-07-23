@@ -1,0 +1,113 @@
+body {
+  background-color: #f5e0e3;
+  padding: 0 50px;
+  margin: 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  margin-top: 50px;
+  color: #7c1c1c;
+}
+
+img {
+  max-height: 300px;
+}
+
+ul.list-of-products {
+  width: 400px;
+}
+
+ul.list-of-products li {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid grey;
+  padding: 5px 20px;
+  background-color: antiquewhite;
+}
+
+ul.list-of-products li:first-child {
+  border: none;
+  color: #799299;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+ul.list-of-products li:nth-child(2) {
+  font-weight: bold;
+  color: #3c8399;
+}
+
+ul.list-of-products li:nth-child(2) div {
+  position: relative;
+}
+
+ul.list-of-products li:nth-child(2) div div {
+  padding: 0 20px;
+  border-radius: 5px;
+  color: grey;
+}
+
+ul.list-of-products li:nth-child(2) div div.currency-1 {
+  display: none;
+  position: absolute;
+  bottom: 120%;
+}
+
+ul.list-of-products li:nth-child(2) div div.currency-2 {
+  display: none;
+  position: absolute;
+  bottom: 220%;
+}
+
+ul.list-of-products li:nth-child(2) div div.currency-3 {
+  display: none;
+  position: absolute;
+  bottom: 320%;
+}
+
+ul.list-of-products li:last-child {
+  font-weight: bold;
+}
+
+.search-for-product {
+  position: relative;
+}
+
+.search-link {
+  position: absolute;
+  width: 150px;
+  padding: 0px 10px;
+  border-radius: 2px;
+  border: 1px solid lightblue;
+  display: none;
+  background-color: white;
+}
+
+.modal-window {
+  visibility: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-window .modal-info {
+  display: none;
+  width: 200px;
+  height: 100px;
+  background-color: orange;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+}
