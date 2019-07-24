@@ -2,6 +2,7 @@ body {
   background-color: #f5e0e3;
   padding: 0 50px;
   margin: 0;
+  font-family: Arial;
 }
 
 ul {
@@ -15,12 +16,17 @@ h2 {
   color: #7c1c1c;
 }
 
-img {
-  max-height: 300px;
+h4 {
+  color: #799299;
+  font-weight: bold;
+  background-color: transparent;
+  padding: 4px 0;
+  text-transform: uppercase;
 }
 
 ul.list-of-products {
   width: 400px;
+  margin-top: 20px;
 }
 
 ul.list-of-products li {
@@ -32,55 +38,51 @@ ul.list-of-products li {
 }
 
 ul.list-of-products li:first-child {
-  border: none;
-  color: #799299;
-  font-weight: bold;
-  background-color: transparent;
-}
-
-ul.list-of-products li:nth-child(2) {
   font-weight: bold;
   color: #3c8399;
 }
 
-ul.list-of-products li:nth-child(2) div {
+ul.list-of-products li:first-child div {
   position: relative;
+  border-bottom: 2px dashed #3c8399;
 }
 
-ul.list-of-products li:nth-child(2) div div {
+ul.list-of-products li:first-child div ul.currency {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: -20px;
   padding: 0 20px;
   border-radius: 5px;
   color: grey;
 }
 
-ul.list-of-products li:nth-child(2) div div.currency-1 {
-  display: none;
-  position: absolute;
-  bottom: 120%;
+ul.list-of-products li:first-child div ul.currency li {
+  display: block;
+  padding: 5px 20px;
+  background-color: #f8f4ef;
 }
 
-ul.list-of-products li:nth-child(2) div div.currency-2 {
-  display: none;
-  position: absolute;
-  bottom: 220%;
+ul.list-of-products li:first-child div ul.currency li:first-child {
+  color: grey;
 }
 
-ul.list-of-products li:nth-child(2) div div.currency-3 {
-  display: none;
-  position: absolute;
-  bottom: 320%;
+ul.list-of-products li:first-child div ul.currency li:hover {
+  color: #3c8399;
+  background-color: white;
 }
 
 ul.list-of-products li:last-child {
   font-weight: bold;
 }
 
-.search-for-product {
+.search {
   position: relative;
 }
 
-.search-link {
+.search .search-link {
   position: absolute;
+  left: 0;
   width: 150px;
   padding: 0px 10px;
   border-radius: 2px;

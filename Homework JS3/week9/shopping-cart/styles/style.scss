@@ -2,6 +2,7 @@ body{
     background-color: rgb(245, 224, 227);
     padding: 0 50px;
     margin: 0;
+    font-family: Arial
 }
 
 ul{
@@ -14,12 +15,17 @@ h2{
     color: rgb(124, 28, 28);
 }
 
-img{
-    max-height: 300px;
+h4 {
+    color: rgb(121, 146, 153);
+    font-weight: bold;
+    background-color: transparent; 
+    padding: 4px 0;
+    text-transform: uppercase;
 }
 
 ul.list-of-products{
     width: 400px;
+    margin-top: 20px;
 
     li{
         display: flex;
@@ -28,40 +34,36 @@ ul.list-of-products{
         padding: 5px 20px;
         background-color: antiquewhite;
 
-        &:first-child{
-            border: none;
-            color: rgb(121, 146, 153);
-            font-weight: bold;
-            background-color: transparent; 
-        }
-
-        &:nth-child(2){   
-
+        &:first-child{   
             font-weight: bold;
             color: rgb(60, 131, 153);
 
             div{
                 position: relative;
+                border-bottom: 2px dashed  rgb(60, 131, 153);;
 
-                div{
+                ul.currency{
+                    display: none;
+                    position: absolute;
+                    top: 100%;   
+                    left: -20px;            
                     padding: 0 20px;                    
                     border-radius: 5px;
                     color: grey;
 
-                    &.currency-1{
-                        display: none;
-                        position: absolute;
-                        bottom: 120%;
-                    }
-                    &.currency-2{
-                        display: none;
-                        position: absolute;
-                        bottom: 220%;
-                    }
-                    &.currency-3{
-                        display: none;
-                        position: absolute;
-                        bottom: 320%;
+                    li{
+                        display: block;
+                        padding: 5px 20px;
+                        background-color: rgb(248, 244, 239);
+
+                        &:first-child{ 
+                            color: grey;
+                        }
+
+                        &:hover{
+                            color: rgb(60, 131, 153);
+                            background-color: white;
+                        }
                     }
                 }                
             }
@@ -73,19 +75,22 @@ ul.list-of-products{
     }
 }
 
-.search-for-product{
+.search{
     position: relative;
+    
+    .search-link{
+        position: absolute;
+        left: 0;
+        width: 150px;
+        padding: 0px 10px;
+        border-radius: 2px;
+        border: 1px solid lightblue;
+        display: none;
+        background-color: white;
+    }
 }
 
-.search-link{
-    position: absolute;
-    width: 150px;
-    padding: 0px 10px;
-    border-radius: 2px;
-    border: 1px solid lightblue;
-    display: none;
-    background-color: white;
-}
+
 
 .modal-window{
     visibility: hidden;
