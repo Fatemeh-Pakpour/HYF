@@ -42,12 +42,17 @@ ul.list-of-products li:first-child {
   color: #3c8399;
 }
 
-ul.list-of-products li:first-child div {
-  position: relative;
+ul.list-of-products li:first-child .price-section {
   border-bottom: 2px dashed #3c8399;
+  display: flex;
+  position: relative;
 }
 
-ul.list-of-products li:first-child div ul.currency {
+ul.list-of-products li:first-child .price-section .choose-currency {
+  border-bottom: none;
+}
+
+ul.list-of-products li:first-child .price-section ul.currency {
   display: none;
   position: absolute;
   top: 100%;
@@ -57,17 +62,16 @@ ul.list-of-products li:first-child div ul.currency {
   color: grey;
 }
 
-ul.list-of-products li:first-child div ul.currency li {
-  display: block;
+ul.list-of-products li:first-child .price-section ul.currency li {
   padding: 5px 20px;
   background-color: #f8f4ef;
 }
 
-ul.list-of-products li:first-child div ul.currency li:first-child {
+ul.list-of-products li:first-child .price-section ul.currency li:first-child {
   color: grey;
 }
 
-ul.list-of-products li:first-child div ul.currency li:hover {
+ul.list-of-products li:first-child .price-section ul.currency li:hover {
   color: #3c8399;
   background-color: white;
 }

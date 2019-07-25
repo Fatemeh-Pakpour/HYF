@@ -1,3 +1,5 @@
+const typesOfCurrency = { DKK: 1, EURO: 2, USD: 3 };
+
 class Product {
     constructor(name, price, userID) {
         this.name = name;
@@ -5,8 +7,7 @@ class Product {
         this.userID = userID;
     }
 
-    //TODO: I would call the method getPriceByCurrency or getConvertedPrice
-    convertCurrency(currency) {
+    getConvertedPrice(currency) {
         switch (currency) {
             case typesOfCurrency.USD:
                 return this.price * 0.15;
@@ -14,9 +15,11 @@ class Product {
             case typesOfCurrency.EURO:
                 return this.price * 0.13;
 
-            //TODO: default should throw an error when unsupported currency is used
-            default:
+            case typesOfCurrency.DKK:
                 return this.price;
+
+            default:
+                throw new Error('Unsupported currency');
         }
     }
 }
@@ -24,7 +27,7 @@ class Product {
 class ShoppingCart {
     constructor(products, currency) {
         this.products = products;
-        this.curency = currency;
+        this.currency = currency;
     }
 
     addProduct(product) {
@@ -40,66 +43,61 @@ class ShoppingCart {
     }
 
     getTotal() {
-        return this.products.map(x => x.convertCurrency(this.curency))
+        return this.products.map(x => x.getConvertedPrice(this.currency))
             .reduce((acc, val) => acc + val, 0);
     }
 
     showTotal() {
-        const totalPrice = document.createElement('li');
-        const totalLabel = document.createElement('span');
-        const totalAmount = document.createElement('span');
-
-        totalLabel.innerHTML = `Total: `;
+        const totalPrice = document.getElementById('total_price');
 
         for (let key in typesOfCurrency) {
-            if (this.curency === typesOfCurrency[key]) {
-                totalAmount.innerHTML = `${this.getTotal()}${key}`;
+            if (this.currency === typesOfCurrency[key]) {
+                totalPrice.innerHTML = `${this.getTotal()}${key}`;
             }
         }
-
-        totalPrice.appendChild(totalLabel);
-        totalPrice.appendChild(totalAmount);
-        listOfProducts.appendChild(totalPrice);
     }
 
     showLabelLine() {
         const self = this;
-
-        const namesLine = document.createElement('li');
-        const nameSection = document.createElement('span');
-
-        //TODO: hardcoded text
-        nameSection.innerHTML = `Name of product`;
-        namesLine.appendChild(nameSection);
+        const priceSection = document.getElementById('price_section');
+        const chooseCurrency = document.getElementById('choose_currency');
+        const currencyList = document.getElementById('currency_list');
 
         for (let key in typesOfCurrency) {
             const singleCurrency = document.createElement('li');
             singleCurrency.innerHTML = key;
             currencyList.appendChild(singleCurrency);
 
-            if (self.curency === typesOfCurrency[key]) {
-                //TODO: hardcoded text
-                priceLabel.innerHTML = `Price(${key})`;
+            if (self.currency === typesOfCurrency[key]) {
+                chooseCurrency.innerHTML = `(${key})`;
             }
 
-            singleCurrency.addEventListener('click', () => {
-                priceSection.innerHTML = '';
+            singleCurrency.addEventListener('click', (event) => {
+                event.stopPropagation();
                 currencyList.innerHTML = '';
                 currencyList.style.display = 'none';
-                self.curency = typesOfCurrency[key];
+                self.currency = typesOfCurrency[key];
                 self.renderProducts();
             })
         }
 
-        priceSection.appendChild(priceLabel);
-        priceSection.appendChild(currencyList);
-        namesLine.appendChild(priceSection);
-        listOfProducts.appendChild(namesLine);
+        priceSection.addEventListener('click', (event) => {
+            currencyList.style.display = 'block';
+            event.stopPropagation();
+        });
+
+        document.addEventListener('click', () => currencyList.style.display = 'none');
     }
 
     renderProducts() {
-        listOfProducts.innerHTML = '';            
         this.showLabelLine();
+        this.showTotal();
+        const listOfProducts = document.getElementById('list_of_products');
+        const items = listOfProducts.querySelectorAll('ul#list_of_products > li');
+
+        for (let i = 1; i < items.length - 1; i++) {
+            listOfProducts.removeChild(items[i]);
+        }
 
         this.products.forEach(element => {
             const itemOfProducts = document.createElement('li');
@@ -109,68 +107,50 @@ class ShoppingCart {
             nameOfItem.innerHTML = changeFirstLetterToUpperCase(element.name);
 
             for (let key in typesOfCurrency) {
-                if (this.curency === typesOfCurrency[key]) {
-                    priceOfItem.innerHTML = `${element.convertCurrency(this.curency)}${key}`;
+                if (this.currency === typesOfCurrency[key]) {
+                    priceOfItem.innerHTML = `${element.getConvertedPrice(this.currency)}${key}`;
                 }
             }
 
             itemOfProducts.appendChild(nameOfItem);
             itemOfProducts.appendChild(priceOfItem);
-            listOfProducts.appendChild(itemOfProducts);
+            listOfProducts.insertBefore(itemOfProducts, listOfProducts.lastElementChild);
         })
-        this.showTotal();
     }
 
-    //TODO: the method name does not realy reflect what it does, should be smth like getDataForUser
-    getUser() {
+    getDataForUser() {
         return new Promise(resolve => {
-            //TODO: user ID is hardcoded
             fetch('https://jsonplaceholder.typicode.com/users/1')
                 .then(result => result.json())
                 .then(data => {
-                    const userName = document.createElement('h4');
+                    const userName = document.getElementById('user_name');
                     userName.innerHTML = data.name;
-                    listOfProducts.parentNode.insertBefore(userName, listOfProducts);
-        
-                    this.renderProducts();         
+                    this.renderProducts();
                 })
         })
     }
 }
 
+function changeFirstLetterToUpperCase(string) {
+    return string[0].toUpperCase() + string.slice(1);
+}
+
 (() => {
-    const typesOfCurrency = { DKK: 1, EURO: 2, USD: 3 };
-
-    const priceSection = document.createElement('div');
-    const currencyList = document.createElement('ul');
-    const priceLabel = document.createElement('span');
-
-    currencyList.setAttribute('class', 'currency');
-
-    const listOfProducts = document.getElementById('list_of_products');
     const search = document.getElementById('search');
     const searchLink = document.getElementById('search_link');
     const modalWindow = document.getElementById('modal_window');
     const modalInfo = document.getElementById('modal_info');
-
-    priceLabel.addEventListener('click', () => currencyList.style.display = 'block');
-    search.addEventListener('keyup', searchItem);
-    searchLink.addEventListener('click', showModalInfo);
-    //modalInfo.addEventListener('click', (event) => event.stopPropagation())
-    modalWindow.addEventListener('click', (event) => hideModalInfo(event));
-
-
-    
-
-    function changeFirstLetterToUpperCase(string) {
-        return string[0].toUpperCase() + string.slice(1);
-    }
 
     const flatscreen = new Product('flat-screen', 5000);
     const router = new Product('router', 3000);
     const computer = new Product('computer', 8000);
     const memory = new Product('memory', 1000);
     const mouse = new Product('mouse', 500);
+
+    search.addEventListener('keyup', searchItem);
+    searchLink.addEventListener('click', showModalInfo);
+    //modalInfo.addEventListener('click', (event) => event.stopPropagation()) //another way to dealing with hideModalInfo
+    modalWindow.addEventListener('click', (event) => hideModalInfo(event));
 
     const shoppingCart = new ShoppingCart([flatscreen], typesOfCurrency.DKK);
     shoppingCart.addProduct(router);
@@ -180,51 +160,44 @@ class ShoppingCart {
 
     //shoppingCart.removeProduct(computer);
 
-    shoppingCart.getUser();        
+    shoppingCart.getDataForUser();
 
     function searchItem() {
         const searchValue = search.value;
-
-        //TODO: let's discuss this code
-        for (let key in shoppingCart) {
-            if (key === 'products') {
-                shoppingCart[key].forEach(element => {
-                    if (searchValue === '') {
-                        searchLink.style.display = 'none';
-                    }
-                    else if (element.name.includes(searchValue)) {
-                        searchLink.style.display = 'block';
-                        searchLink.innerHTML = element.name;
-                    }
-                })
+        searchLink.innerHTML = '';
+        shoppingCart.products.forEach(element => {
+            if (searchValue === '') {
+                searchLink.style.display = 'none';
             }
-        }
+            else if (element.name.includes(searchValue)) {
+                searchLink.style.display = 'block';
+                const item = document.createElement('li');
+                item.innerHTML = element.name;
+                searchLink.appendChild(item);
+
+                item.addEventListener('click', () => showModalInfo(element.name));
+            }
+        })
     }
 
-    function showModalInfo() {
+    function showModalInfo(value) {
         searchLink.style.display = 'none';
         modalWindow.style.visibility = 'visible';
         modalInfo.style.display = 'block';
-        for (let key in shoppingCart) {
-            if (key === 'products') {
-                shoppingCart[key].forEach(element => {
-                    //TODO: never use innerHTML for working with data
-                    if (element.name.includes(searchLink.innerHTML)) {
-                        for (let key in typesOfCurrency) {
-                            if (shoppingCart.curency === typesOfCurrency[key]) {
-                                modalInfo.innerHTML = `${changeFirstLetterToUpperCase(element.name)}: 
-                                ${element.convertCurrency(shoppingCart.curency)}${key}`;
-                            }
-                        }                        
+        shoppingCart.products.forEach(element => {
+            if (element.name.includes(value)) {
+                for (let key in typesOfCurrency) {
+                    if (shoppingCart.currency === typesOfCurrency[key]) {
+                        modalInfo.innerHTML = `${changeFirstLetterToUpperCase(element.name)}: 
+                                ${element.getConvertedPrice(shoppingCart.currency)}${key}`;
                     }
-                })
+                }
             }
-        }
+        })
     }
 
     function hideModalInfo(event) {
-        //TODO: it only works because modalInfo does not contain any child elements
-        if (event.target !== modalInfo) {
+        if (event.target === modalWindow) {
             modalWindow.style.visibility = 'hidden';
             modalInfo.style.display = 'none';
         }

@@ -10,10 +10,28 @@
     <h2>Shopping Cart</h2>
     <span>Search product</span>
     <span class="search">
-        <input type="text" id="search" class="search-for-product" autocomplete="off"/>
-        <div class="search-link" id="search_link"></div>
-    </span>    
-    <ul id="list_of_products" class="list-of-products" data-table-title=""></ul>
+        <input type="text" id="search" class="search-for-product" autocomplete="off" />
+        <ul class="search-link" id="search_link"></ul>
+    </span>
+    <div>
+        <h4 id="user_name"></h4>
+        <ul id="list_of_products" class="list-of-products" data-table-title="">
+            <li>
+                <div>Name of product</div>
+                <div id="price_section" class="price-section">
+                    <span>Price</span>
+                    <div id="choose_currency" class="choose-currency">
+                    </div>
+                    <ul id="currency_list" class="currency"></ul>
+                </div>
+            </li>
+            <li>
+                <div>Total: </div>
+                <div id="total_price"></div>
+            </li>
+        </ul>
+    </div>
+
     <div class="modal-window" id="modal_window">
         <div class="modal-info" id="modal_info"></div>
     </div>
