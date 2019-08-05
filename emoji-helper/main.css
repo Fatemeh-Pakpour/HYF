@@ -1,0 +1,100 @@
+body, ul{
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 2rem;
+    font-size: 1rem;
+    
+}
+main{
+    width: 960px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+form{
+    width: 50rem;
+    display: flex;
+    flex-direction: column;
+}
+textarea, input{
+    font-size: 2rem;
+}
+form label{
+    font-size: 1rem;
+    padding: 1rem 0 0;
+}
+ul.render-emoji{
+    margin-top:2rem;
+    list-style-type: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    height: 25rem;
+    overflow: auto;
+}
+ul.render-emoji li{    
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+ul.render-emoji li .span-name{
+    font-size: 0.5rem;    
+    width: 4rem;
+    height: 2.5rem;
+    overflow: hidden;
+    
+}
+ul.render-emoji li .span-image{
+    font-size: 2rem;
+}
+ul.render-emoji li .favourite{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: yellow;
+    text-shadow: 1px 1px black,
+     -1px 1px black, 0 -1px black;
+}
+
+ul.categories{
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+    justify-content: space-around;
+}
+ul.categories li{
+    border: 1px solid #dbbdbd;
+    background-color: rgb(233, 161, 134);
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+}
+ul.categories li:hover{
+    background-color: coral;
+}
+
+.favourite-emoji{
+    
+    margin-top: 2em;
+    position: sticky;
+    bottom: 0;
+    border:2px solid #dbbdbd;
+    padding: 10px;
+    background: white;
+    display: flex;
+    justify-content: flex-start;
+}
+.favourite-emoji ul{
+    list-style-type: none;
+    display: flex;
+}
+.favourite-emoji ul li{
+    cursor:pointer;
+    font-size: 1.5rem;
+}

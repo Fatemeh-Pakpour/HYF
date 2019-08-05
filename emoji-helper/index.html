@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <main>
+        <form>
+            <label for="textArea">Write some text</label>
+            <textarea rows="2" cols="68" id="textArea" placeholder="Write a message here......"></textarea>
+            <label for="searchString">Search for an emoji</label>
+            <input id="searchString" type="text" value="" />
+            <label for="categoriesEmoji">Choose category</label>
+            <ul id="categoriesEmoji" class="categories"></ul>
+
+            <ul id="renderEmoji" class="render-emoji"></ul>
+
+            <div class="favourite-emoji">
+                <div>Favourite:</div>
+                <ul id="favouriteEmojis"></ul>
+            </div>
+            
+        </form>
+    </main>
+    <script src="copy-to-clipboard.js"></script>
+    <script src="main.js"></script>
+</body>
+
+</html>
