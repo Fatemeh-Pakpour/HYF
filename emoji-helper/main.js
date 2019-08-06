@@ -115,12 +115,15 @@
             spanFavourite.addEventListener('click', (event) => {
                 event.stopPropagation();                
                 
-                if(!listOfFavouriteEmoji.includes(emoji.char)){
-                    listOfFavouriteEmoji.splice(0, 0, emoji.char);
+
+                if(listOfFavouriteEmoji.includes(emoji.char)){
+                    listOfFavouriteEmoji.splice(listOfFavouriteEmoji.indexOf(emoji.char), 1);
                 }
                 if (listOfFavouriteEmoji.length > 20) {
                     listOfFavouriteEmoji.pop();
                 }
+
+                listOfFavouriteEmoji.splice(0, 0, emoji.char);
                 let arrayToStore = JSON.stringify(listOfFavouriteEmoji);
                 localStorage.setItem('emoji', arrayToStore);
 
