@@ -8,22 +8,18 @@ router.get('/meal', function (req, res) {
     const randomMeal = meals[Math.floor(Math.random() * meals.length)];
 
     let meal = '';
-    let listOfEmails = [];
+    let listOfEmails = reservations
+    .filter(reservation => reservation.MealId == randomMeal.Id)
+    .map(item => item.Email);
 
-    reservations.forEach(reservation => {
-        if (randomMeal.Id == reservation.MealId) {
-            listOfEmails.push(reservation.Email);
-        } else {
-            meal = randomMeal.Title;
-        }
-    })
-
-    let emailString = '';
-    listOfEmails.forEach(email => {
-        emailString += `, ${email}`;
-    })
-
-    meal = randomMeal.Title + emailString;
+    let emailString = listOfEmails.join(', ');
+    
+    if(emailString === ''){
+        meal = randomMeal.Title;
+    }
+    else{
+        meal = `${randomMeal.Title}: ${emailString}`;
+    }   
 
     res.json(meal);
 });
