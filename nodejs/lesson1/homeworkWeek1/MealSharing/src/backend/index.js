@@ -1,5 +1,5 @@
-const express = require('express')
-const app = express()
+const express = require('express');
+const app = express();
 
 const meals = require('./routes/meals.js');
 const cheapMeal = require('./routes/cheap-meals.js');
