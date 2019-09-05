@@ -192,6 +192,20 @@ SELECT Meal.Id, Meal.Title, AVG(Review.Stars)
 	GROUP BY Meal.Title
     ORDER BY Review.Stars;
 
+ALTER TABLE reservation
+ADD Email VARCHAR(255);
+
+UPDATE Reservation
+SET Email = 'olha@afanasieva.com'
+WHERE Id = 1 OR Id = 4 OR Id = 8;
+
+UPDATE Reservation
+SET Email = 'student@student.com'
+WHERE Id = 3 OR Id = 7 OR Id = 12 OR ID = 10;
+
+UPDATE Reservation
+SET Email = 'teacher@teacher.com'
+WHERE Id = 5 OR Id = 9 OR Id = 11 OR ID = 13;
 
 
 

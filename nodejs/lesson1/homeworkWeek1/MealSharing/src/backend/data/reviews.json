@@ -1,0 +1,82 @@
+[
+	{
+		"Id" : 1,
+		"Title" : "Very good",
+		"Description" : "I like it very much",
+		"MealId" : 4,
+		"Stars" : 5,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 2,
+		"Title" : "Good",
+		"Description" : "I like it",
+		"MealId" : 3,
+		"Stars" : 4,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 3,
+		"Title" : "Normal",
+		"Description" : "It was normal",
+		"MealId" : 4,
+		"Stars" : 3,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 5,
+		"Title" : "Normal",
+		"Description" : "Ido not like it very much",
+		"MealId" : 3,
+		"Stars" : 1,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 6,
+		"Title" : "Very good",
+		"Description" : "I like it very much",
+		"MealId" : 5,
+		"Stars" : 5,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 7,
+		"Title" : "Good",
+		"Description" : "I like it",
+		"MealId" : 6,
+		"Stars" : 4,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 8,
+		"Title" : "Normal",
+		"Description" : "It was normal",
+		"MealId" : 7,
+		"Stars" : 3,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 9,
+		"Title" : "Pretty normal",
+		"Description" : "I like it a little bit",
+		"MealId" : 8,
+		"Stars" : 2,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 11,
+		"Title" : "Good enough",
+		"Description" : "I like",
+		"MealId" : 4,
+		"Stars" : 3,
+		"CreatedDate" : "2019-08-28 23:27:28"
+	},
+	{
+		"Id" : 12,
+		"Title" : "Very good",
+		"Description" : "I like it very much",
+		"MealId" : 6,
+		"Stars" : 5,
+		"CreatedDate" : "2019-08-31 15:37:03"
+	}
+]

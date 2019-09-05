@@ -1,0 +1,15 @@
+fetch(url, {method: POST}).then(console.log)
+pwd 
+ls
+clear
+mkdir
+cd
+
+node(~console) 
+
+
+//install npm and package
+// in the right directory
+npm init;
+npm install chalk;
+
