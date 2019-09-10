@@ -1,0 +1,102 @@
+[
+	{
+		"Id" : 1,
+		"Title" : "Pasta",
+		"Description" : "Pasta with salmon",
+		"Location" : "Copenhagen",
+		"When" : "2028-08-20 19:00:00",
+		"MaxReservations" : 2,
+		"Price" : 10.55,
+		"CreatedDate" : "2010-10-20 19:00:00"
+	},
+	{
+		"Id" : 3,
+		"Title" : "Cookies",
+		"Description" : "Sweet cookies",
+		"Location" : "Copenhagen",
+		"When" : "2031-08-20 19:00:00",
+		"MaxReservations" : 2,
+		"Price" : 12.00,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 4,
+		"Title" : "Eggs",
+		"Description" : "Fried eggs",
+		"Location" : "Fyn",
+		"When" : "2028-08-20 19:00:00",
+		"MaxReservations" : 1,
+		"Price" : 3.00,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 5,
+		"Title" : "Salmon",
+		"Description" : "Pasta with salmon",
+		"Location" : "Copenhagen",
+		"When" : "2030-08-20 19:00:00",
+		"MaxReservations" : 1,
+		"Price" : 14.22,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 6,
+		"Title" : "Chicken",
+		"Description" : "Chicken & BEan",
+		"Location" : "Odense",
+		"When" : "2028-08-20 19:00:00",
+		"MaxReservations" : 5,
+		"Price" : 55.00,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 7,
+		"Title" : "Meatball",
+		"Description" : "Danish meatball",
+		"Location" : "Copenhagen",
+		"When" : "2031-08-20 19:00:00",
+		"MaxReservations" : 2,
+		"Price" : 34.55,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 8,
+		"Title" : "Potato",
+		"Description" : "Sweet potato",
+		"Location" : "Copenhagen",
+		"When" : "2028-08-20 19:00:00",
+		"MaxReservations" : 2,
+		"Price" : 2.55,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 9,
+		"Title" : "Pizza",
+		"Description" : "Pizza with cheese",
+		"Location" : "Odense",
+		"When" : "2001-09-20 19:00:00",
+		"MaxReservations" : 3,
+		"Price" : 5.55,
+		"CreatedDate" : "2019-08-28 22:57:41"
+	},
+	{
+		"Id" : 10,
+		"Title" : "Soup",
+		"Description" : "Tomato soup",
+		"Location" : "Odense",
+		"When" : "2030-08-20 19:00:00",
+		"MaxReservations" : 2,
+		"Price" : 2.00,
+		"CreatedDate" : "2002-10-20 19:00:00"
+	},
+	{
+		"Id" : 11,
+		"Title" : "Salat",
+		"Description" : "Potato salat",
+		"Location" : "Copenhagen",
+		"When" : "2028-08-20 19:00:00",
+		"MaxReservations" : 6,
+		"Price" : 4.00,
+		"CreatedDate" : "2010-10-20 19:00:00"
+	}
+]
