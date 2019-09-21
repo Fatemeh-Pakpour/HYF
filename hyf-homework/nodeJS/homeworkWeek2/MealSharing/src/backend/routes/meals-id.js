@@ -15,7 +15,7 @@ router.get('/meals/:id', function (req, res) {
     }
 
     const mealId = meals.find(meal => meal.Id === +paramsId);
-    res.json(mealId || result);
+    res.json(mealId || {msg: result});
 })
 
 module.exports = router;

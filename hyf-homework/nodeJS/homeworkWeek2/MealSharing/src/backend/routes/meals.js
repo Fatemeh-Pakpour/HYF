@@ -14,7 +14,7 @@ router.get('/meals', function (req, res) {
 
     for(let key in query){
         if(!options.hasOwnProperty(key)){
-            res.status(400).send('There is no such query parameter');
+            res.status(400).json({ msg: "There is no such query parameter"});
         }
     }
 

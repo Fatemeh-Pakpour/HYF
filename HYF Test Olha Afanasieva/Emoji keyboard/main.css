@@ -1,0 +1,61 @@
+body, ul{
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin-top: 10px;
+    
+}
+main{
+    width: 500px;
+    margin: 0 auto;
+}
+ul{
+    margin-top:20px;
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    height: 500px;
+    overflow: auto;
+}
+
+const emojiiApi = 'https://raw.githubusercontent.com/amio/emoji.json/master/emoji.json';
+let listOfEmojiis;
+const renderEmojiis = document.getElementById('renderEmojiis');
+const searchString = document.getElementById('searchString');
+
+function fetchEmojiiList(api) {
+    fetch(api)
+        .then(response => response.json())
+        .then(data => {
+            listOfEmojiis = data;
+            console.log(listOfEmojiis);
+            renderListOfEmojiis(data);
+        })
+}
+
+fetchEmojiiList(emojiiApi);
+
+searchString.addEventListener('keyup', () => {
+    const valueForSearch = searchString.value;
+    console.log(valueForSearch, listOfEmojiis);
+    let searchList = listOfEmojiis.filter(element => {
+        return element.name.toLowerCase().includes(valueForSearch.toLowerCase());
+    })
+    renderListOfEmojiis(searchList);
+});
+
+
+function renderListOfEmojiis(arr) {
+    renderEmojiis.innerHTML = '';
+
+    arr.forEach(emoji => {
+        const li = document.createElement('li');
+        li.innerHTML = emoji.char;
+        
+        li.addEventListener('click', () => {writeToClipboardOnPermission(emoji.char)});
+        renderEmojiis.appendChild(li);
+    });
+}
+
