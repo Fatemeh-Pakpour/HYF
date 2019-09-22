@@ -4,25 +4,10 @@ const router = express.Router();
 const pool = require("./../database");
 const bodyParser = require("body-parser");
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
-//router.get("/api/meals", (request, response) => {
-  // pool.query("SELECT * FROM meal", function(error, results, fields) {
-  //   if(error) {
-  //     console.log(error);
-  //     throw error;
-  //   }
-  //   if(!error){
-  //     response.json(results);
-  //   }    
-  //   // error will be an Error if one occurred during the query
-  //   // results will contain the results of the query
-  //   // fields will contain information about the returned results fields (if any)
-  // });
-//});
-
-router.get("/api/meals", (request, response) => {
+router.get("/", (request, response) => {
   const options = {
     maxPrice: request.query.maxPrice,
     availableReservations: request.query.availableReservations,
@@ -70,5 +55,83 @@ router.get("/api/meals", (request, response) => {
     }   
   });  
 });
+
+router.get("/:id", (request, response) => {
+  const id = request.params.id;
+  pool.query("SELECT * FROM meal WHERE Id = ?", id, function(error, results, fields) {
+    if(error) {
+      console.log(error);
+      throw error;
+    }
+    if(!error){
+      response.json(results);
+    }
+  });
+});
+
+router.post("/add-meal", (request, response) => {
+  // Example for meal
+  // {
+    // "Title": "Chips", 
+    // "Description": "Chips from pack", 
+    // "Location" : "London", 
+    // "When": "23.10.2019", 
+    // "MaxReservations": "5", 
+    // "Price" : "3.23", 
+    // "CreatedDate" : "21.10.2019"
+  // } 
+  const newMeal = request.body;
+
+  pool.query(`INSERT INTO meal SET ?`, newMeal, function(error, results, fields) {
+    if(error) {
+      console.log(error);
+      throw error;
+    }
+    if(!error){
+      response.send("Meal added successfully! Congrats!");
+    }
+  });
+});
+
+router.put("/:id", (request, response) => {
+  const newMeal = request.body;
+  const id = request.params.id;
+
+  // Example for meal
+  // {
+  //   "Location" : "Copenhagen", 
+  //   "MaxReservations": "5"
+  // } 
+  
+  let keys = Object.keys(newMeal); //list the properties of an object from req.body
+  let arrayOfNewValues = keys.map(x => `${x} = "${newMeal[x]}"`); //form array [key = new value]
+  let listOfNewValues = arrayOfNewValues.join(', '); //to the mySQL format
+
+  const query = `UPDATE meal SET ${listOfNewValues} WHERE Id = ${id}`
+  pool.query(query, function(error, results, fields) {
+    if(error) {
+      console.log(error);
+      throw error;
+    }
+    if(!error){
+      response.send("Meal updated successfully! Congrats!");
+    }
+  });
+});
+
+router.delete("/:id", (request, response) => {
+  const id = request.params.id;
+
+  pool.query(`DELETE FROM meal WHERE Id = ${id}`, function(error, results, fields) {
+    if(error) {
+      console.log(error);
+      throw error;
+    }
+    if(!error){
+      response.send("Meal deleted successfully!");
+    }
+  });
+});
+
 
 module.exports = router;
