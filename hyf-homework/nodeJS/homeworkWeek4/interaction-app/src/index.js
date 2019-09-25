@@ -1,4 +1,5 @@
 const express = require('express');
+const router = express.Router();
 const localtunnel = require('localtunnel');
 require('dotenv').config();
 
@@ -6,6 +7,10 @@ const app = express();
 
 const port = process.env.PORT;
 const subdomain = process.env.SUBDOMAIN;
+
+const clientRouter = require('./client.js');
+router.use('/incoming-sms', clientRouter);
+app.use("/", router);
 
 app.use('/check', (req, res) => {
     res.send('Ok');
