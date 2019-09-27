@@ -1,5 +1,3 @@
-// Inspiration taken from https://medium.com/@mhagemann/create-a-mysql-database-middleware-with-node-js-8-and-async-await-6984a09d49f4
-
 const mysql = require("mysql");
 
 require("dotenv").config();

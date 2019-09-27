@@ -9,12 +9,15 @@ const port = process.env.PORT;
 const subdomain = process.env.SUBDOMAIN;
 
 const clientRouter = require('./client.js');
-router.use('/incoming-sms', clientRouter);
-app.use("/", router);
+const kitchenRouter = require('./kitchen.js');
 
 app.use('/check', (req, res) => {
-    res.send('Ok');
+  res.send('Ok');
 })
+
+router.use('/incoming-sms', clientRouter);
+router.use('/kitchen', kitchenRouter);
+app.use("/", router);
 
 app.listen(port, () => {
     console.log(`Server is working at ${port}`);
